@@ -1,4 +1,4 @@
-/* Pickit Color v1.1.0, @license Donationware */
+/* Pickit Color v1.2.0, @license Donationware */
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
     typeof define === 'function' && define.amd ? define(['exports'], factory) :
@@ -63,11 +63,82 @@
         return e.name = "SuppressedError", e.error = error, e.suppressed = suppressed, e;
     };
 
+    var en = {
+        hue: "Hue",
+        saturation: "Saturation and Lightness",
+        lightness: "Lightness",
+        alpha: "Alpha",
+        presets: "Preset colors",
+        eyeDropper: "Pick color from screen",
+        systemPicker: "System color picker"
+    };
+
+    var de = {
+        hue: "Farbton",
+        saturation: "Sättigung und Helligkeit",
+        lightness: "Helligkeit",
+        alpha: "Transparenz",
+        presets: "Vordefinierte Farben",
+        eyeDropper: "Farbe vom Bildschirm aufnehmen",
+        systemPicker: "System-Farbwähler"
+    };
+
+    var sl = {
+        hue: "Odtenek",
+        saturation: "Nasičenost in svetlost",
+        lightness: "Svetlost",
+        alpha: "Prosojnost",
+        presets: "Prednastavljene barve",
+        eyeDropper: "Izberi barvo z zaslona",
+        systemPicker: "Sistemski izbirnik barv"
+    };
+
+    /**
+     * Pickit Color - Language Files
+     *
+     * To contribute a translation:
+     * 1. Copy en.ts or any existing language file
+     * 2. Translate all strings
+     * 3. Export your language in this file
+     * 4. Submit a PR!
+     */
+    // Example for contributors:
+    // export { default as fr } from './fr';
+    // export { default as es } from './es';
+
+    var languages = /*#__PURE__*/Object.freeze({
+        __proto__: null,
+        en: en,
+        de: de,
+        sl: sl
+    });
+
     /**
      * Pickit Color Picker
      * An accessible, lightweight color picker inspired by flatpickr
      * Supports HSL, RGB, HEX formats with keyboard navigation
      */
+    // Initialize translations with built-in languages
+    var translations = {
+        en: en,
+        de: de,
+        sl: sl
+    };
+    function detectLanguage() {
+        // Try HTML lang attribute
+        var htmlLang = document.documentElement.lang;
+        if (htmlLang) {
+            var lang = htmlLang.split('-')[0].toLowerCase();
+            if (translations[lang])
+                return lang;
+        }
+        // Try browser language
+        var browserLang = navigator.language.split('-')[0].toLowerCase();
+        if (translations[browserLang])
+            return browserLang;
+        // Default to English
+        return 'en';
+    }
     var ColorPicker = /** @class */ (function () {
         function ColorPicker(element, options) {
             if (options === void 0) { options = {}; }
@@ -119,6 +190,7 @@
                 inputPreview: (_h = options.inputPreview) !== null && _h !== void 0 ? _h : false,
                 previewTarget: options.previewTarget || "",
                 previewProperty: options.previewProperty || "background-color",
+                language: options.language || detectLanguage(),
                 onChange: options.onChange || (function () { }),
                 onOpen: options.onOpen || (function () { }),
                 onClose: options.onClose || (function () { }),
@@ -126,16 +198,41 @@
                 position: options.position || "auto",
                 closeOnSelect: (_j = options.closeOnSelect) !== null && _j !== void 0 ? _j : true,
                 ariaLabels: {
-                    hue: ((_k = options.ariaLabels) === null || _k === void 0 ? void 0 : _k.hue) || "Hue",
-                    saturation: ((_l = options.ariaLabels) === null || _l === void 0 ? void 0 : _l.saturation) || "Saturation and Lightness",
-                    lightness: ((_m = options.ariaLabels) === null || _m === void 0 ? void 0 : _m.lightness) || "Lightness",
-                    alpha: ((_o = options.ariaLabels) === null || _o === void 0 ? void 0 : _o.alpha) || "Alpha",
-                    presets: ((_p = options.ariaLabels) === null || _p === void 0 ? void 0 : _p.presets) || "Preset colors",
+                    hue: ((_k = options.ariaLabels) === null || _k === void 0 ? void 0 : _k.hue) || translations[options.language || detectLanguage()].hue,
+                    saturation: ((_l = options.ariaLabels) === null || _l === void 0 ? void 0 : _l.saturation) || translations[options.language || detectLanguage()].saturation,
+                    lightness: ((_m = options.ariaLabels) === null || _m === void 0 ? void 0 : _m.lightness) || translations[options.language || detectLanguage()].lightness,
+                    alpha: ((_o = options.ariaLabels) === null || _o === void 0 ? void 0 : _o.alpha) || translations[options.language || detectLanguage()].alpha,
+                    presets: ((_p = options.ariaLabels) === null || _p === void 0 ? void 0 : _p.presets) || translations[options.language || detectLanguage()].presets,
                 },
             };
             this.init();
             ColorPicker.instances.set(this.input, this);
         }
+        /**
+         * Add a custom translation for the ColorPicker
+         * @param langCode - Language code (e.g., 'fr', 'es', 'it')
+         * @param translation - Translation object with all required strings
+         * @example
+         * ColorPicker.addTranslation('fr', {
+         *   hue: 'Teinte',
+         *   saturation: 'Saturation et luminosité',
+         *   lightness: 'Luminosité',
+         *   alpha: 'Alpha',
+         *   presets: 'Couleurs prédéfinies',
+         *   eyeDropper: 'Pipette à couleurs',
+         *   systemPicker: 'Sélecteur système'
+         * });
+         */
+        ColorPicker.addTranslation = function (langCode, translation) {
+            translations[langCode.toLowerCase()] = translation;
+        };
+        /**
+         * Get all available language codes
+         * @returns Array of language codes
+         */
+        ColorPicker.getAvailableLanguages = function () {
+            return Object.keys(translations);
+        };
         ColorPicker.prototype.init = function () {
             // Parse initial color
             var initialColor = this.input.value || this.options.defaultColor;
@@ -1039,6 +1136,10 @@
                         case 'previewProperty':
                             options.previewProperty = value;
                             break;
+                        case 'lang':
+                        case 'language':
+                            options.language = value;
+                            break;
                     }
                 });
             }
@@ -1084,6 +1185,7 @@
     exports.ColorPicker = ColorPicker;
     exports.default = colorpicker;
     exports.initColorPickers = initColorPickers;
+    exports.languages = languages;
 
     Object.defineProperty(exports, '__esModule', { value: true });
 

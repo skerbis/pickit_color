@@ -115,10 +115,7 @@
     }
 
     .lang-toggle {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      padding: 12px 20px;
+      padding: 10px 20px;
       background: var(--container-bg);
       border: 2px solid var(--input-border);
       border-radius: 8px;
@@ -128,9 +125,8 @@
       color: var(--text-primary);
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
       transition: all 0.3s ease;
-      z-index: 10000;
       text-decoration: none;
-      display: block;
+      display: inline-block;
       text-align: center;
     }
 
@@ -428,8 +424,6 @@
   </style>
 </head>
 <body>
-  <a href="index.html" class="lang-toggle">🇬🇧 English</a>
-
   <div class="container">
     <div class="header">
       <div style="display: inline-block; margin-bottom: 20px;">
@@ -465,6 +459,11 @@
         </svg>
       </div>
       <h1>Pickit Color</h1>
+      <div style="display: flex; gap: 8px; justify-content: center; margin: 16px 0;">
+        <a href="index.html" class="lang-toggle">🇬🇧 EN</a>
+        <a href="index-de.html" class="lang-toggle" style="background: #3b82f6;">🇩🇪 DE</a>
+        <a href="index-sl.html" class="lang-toggle">🇸🇮 SL</a>
+      </div>
       <p class="subtitle">Modern, accessible color picker with auto-initialization</p>
       <div class="badges">
         <a href="https://github.com/skerbis/pickit_color" target="_blank" class="badge" style="background: #24292e; text-decoration: none;">⭐ GitHub</a>
@@ -616,6 +615,17 @@
           </div>
           <input type="text" data-colorpicker="format:hex,target:#theme-text-target-de,property:color" value="#3b82f6">
           <div class="code-block"><code>&lt;input data-colorpicker="format:hex,target:#theme-text-target-de,property:color"&gt;</code></div>
+        </div>
+
+        <div class="demo-card">
+          <h4>🌍 Mehrsprachig</h4>
+          <label>Sprache manuell setzen oder automatisch erkennen</label>
+          <input type="text" data-colorpicker="format:hex,language:de" value="#3b82f6">
+          <div class="code-block"><code>&lt;input data-colorpicker="format:hex,language:de"&gt;
+&lt;!-- Auto-Erkennung aus &lt;html lang="de"&gt; oder Browser --&gt;</code></div>
+          <p style="margin-top: 12px; font-size: 14px; color: var(--text-secondary);">
+            Unterstützt: <strong>de</strong> (Deutsch), <strong>en</strong> (English), <strong>sl</strong> (Slovenščina)
+          </p>
         </div>
 
         <div class="demo-card" style="grid-column: 1 / -1;">
@@ -915,6 +925,30 @@ const instance = ColorPicker.getInstance(element);</code></div>
 &lt;input class="colorpicker" data-format="hsl"&gt;
 
 &lt;!-- Automatisch initialisiert! --&gt;</code></div>
+
+      <h3>6. Eigene Übersetzung hinzufügen</h3>
+      <div class="code-block"><code>import colorpicker, { ColorPicker } from 'pickit-color';
+
+// Französische Übersetzung hinzufügen
+ColorPicker.addTranslation('fr', {
+  hue: 'Teinte',
+  saturation: 'Saturation et luminosité',
+  lightness: 'Luminosité',
+  alpha: 'Alpha',
+  presets: 'Couleurs prédéfinies',
+  eyeDropper: 'Pipette à couleurs',
+  systemPicker: 'Sélecteur système'
+});
+
+// Verfügbare Sprachen prüfen
+console.log(ColorPicker.getAvailableLanguages());
+// ['en', 'de', 'sl', 'fr']
+
+// Neue Übersetzung verwenden
+colorpicker('#color-input', {
+  format: 'hex',
+  language: 'fr'
+});</code></div>
     </section>
 
     <!-- Features -->

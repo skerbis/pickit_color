@@ -34,6 +34,24 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
+import * as languages from './l10n';
+var translations = {
+    en: languages.en,
+    de: languages.de,
+    sl: languages.sl
+};
+function detectLanguage() {
+    var htmlLang = document.documentElement.lang;
+    if (htmlLang) {
+        var lang = htmlLang.split('-')[0].toLowerCase();
+        if (translations[lang])
+            return lang;
+    }
+    var browserLang = navigator.language.split('-')[0].toLowerCase();
+    if (translations[browserLang])
+        return browserLang;
+    return 'en';
+}
 var ColorPicker = (function () {
     function ColorPicker(element, options) {
         if (options === void 0) { options = {}; }
@@ -84,6 +102,7 @@ var ColorPicker = (function () {
             inputPreview: (_h = options.inputPreview) !== null && _h !== void 0 ? _h : false,
             previewTarget: options.previewTarget || "",
             previewProperty: options.previewProperty || "background-color",
+            language: options.language || detectLanguage(),
             onChange: options.onChange || (function () { }),
             onOpen: options.onOpen || (function () { }),
             onClose: options.onClose || (function () { }),
@@ -91,16 +110,22 @@ var ColorPicker = (function () {
             position: options.position || "auto",
             closeOnSelect: (_j = options.closeOnSelect) !== null && _j !== void 0 ? _j : true,
             ariaLabels: {
-                hue: ((_k = options.ariaLabels) === null || _k === void 0 ? void 0 : _k.hue) || "Hue",
-                saturation: ((_l = options.ariaLabels) === null || _l === void 0 ? void 0 : _l.saturation) || "Saturation and Lightness",
-                lightness: ((_m = options.ariaLabels) === null || _m === void 0 ? void 0 : _m.lightness) || "Lightness",
-                alpha: ((_o = options.ariaLabels) === null || _o === void 0 ? void 0 : _o.alpha) || "Alpha",
-                presets: ((_p = options.ariaLabels) === null || _p === void 0 ? void 0 : _p.presets) || "Preset colors",
+                hue: ((_k = options.ariaLabels) === null || _k === void 0 ? void 0 : _k.hue) || translations[options.language || detectLanguage()].hue,
+                saturation: ((_l = options.ariaLabels) === null || _l === void 0 ? void 0 : _l.saturation) || translations[options.language || detectLanguage()].saturation,
+                lightness: ((_m = options.ariaLabels) === null || _m === void 0 ? void 0 : _m.lightness) || translations[options.language || detectLanguage()].lightness,
+                alpha: ((_o = options.ariaLabels) === null || _o === void 0 ? void 0 : _o.alpha) || translations[options.language || detectLanguage()].alpha,
+                presets: ((_p = options.ariaLabels) === null || _p === void 0 ? void 0 : _p.presets) || translations[options.language || detectLanguage()].presets,
             },
         };
         this.init();
         ColorPicker.instances.set(this.input, this);
     }
+    ColorPicker.addTranslation = function (langCode, translation) {
+        translations[langCode.toLowerCase()] = translation;
+    };
+    ColorPicker.getAvailableLanguages = function () {
+        return Object.keys(translations);
+    };
     ColorPicker.prototype.init = function () {
         var initialColor = this.input.value || this.options.defaultColor;
         this.currentColor = this.parseColor(initialColor);
@@ -935,6 +960,10 @@ export function initColorPickers(root) {
                     case 'previewProperty':
                         options.previewProperty = value;
                         break;
+                    case 'lang':
+                    case 'language':
+                        options.language = value;
+                        break;
                 }
             });
         }
@@ -964,6 +993,8 @@ export function initColorPickers(root) {
     });
     return pickers;
 }
+import * as languages_1 from './l10n';
+export { languages_1 as languages };
 if (typeof window !== 'undefined' && typeof document !== 'undefined') {
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', function () { return initColorPickers(); });

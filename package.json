@@ -1,10 +1,27 @@
 {
   "name": "pickit-color",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "A modern, accessible color picker with HSL support, presets, slider mode, and screen color picking",
   "main": "dist/colorpicker.js",
   "module": "dist/esm/colorpicker/index.js",
   "types": "dist/colorpicker.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/esm/colorpicker/index.js",
+      "require": "./dist/colorpicker.js",
+      "types": "./dist/colorpicker.d.ts"
+    },
+    "./l10n": {
+      "import": "./dist/esm/colorpicker/l10n/index.js",
+      "require": "./dist/l10n/index.js",
+      "types": "./dist/l10n/index.d.ts"
+    },
+    "./l10n/*": {
+      "import": "./dist/esm/colorpicker/l10n/*.js",
+      "require": "./dist/l10n/*.js",
+      "types": "./dist/l10n/*.d.ts"
+    }
+  },
   "author": {
     "name": "Thomas Skerbis",
     "email": "thomas@klxm.de",

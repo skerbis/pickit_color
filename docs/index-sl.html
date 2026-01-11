@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sl">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Pickit Color - A modern, accessible color picker with HSL support, presets, slider mode, and screen color picking">
-  <meta name="keywords" content="color picker, colorpicker, hsl, rgba, hex, eyedropper, accessibility, a11y, typescript">
+  <meta name="description" content="Pickit Color - Sodoben, dostopen izbirnik barv s podporo HSL, prednastavljenimi barvami, načinom drsnikov in izbiranjem barv z zaslona">
+  <meta name="keywords" content="color picker, izbirnik barv, hsl, rgba, hex, eyedropper, accessibility, a11y, typescript">
   <meta name="author" content="Thomas Skerbis">
   
-  <title>Pickit Color - Modern Color Picker Demo & Documentation</title>
+  <title>Pickit Color - Demo in dokumentacija modernega izbirnika barv</title>
   <link rel="stylesheet" href="dist/colorpicker.css">
   
   <style>
@@ -428,13 +428,12 @@
     <div class="header">
       <div style="display: inline-block; margin-bottom: 20px;">
         <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <!-- Outer Circle with Gradient -->
           <defs>
-            <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+            <linearGradient id="grad1-sl" x1="0%" y1="0%" x2="100%" y2="100%">
               <stop offset="0%" style="stop-color:#667eea;stop-opacity:1"></stop>
               <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1"></stop>
             </linearGradient>
-            <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="0%">
+            <linearGradient id="grad2-sl" x1="0%" y1="0%" x2="100%" y2="0%">
               <stop offset="0%" style="stop-color:#ef4444;stop-opacity:1"></stop>
               <stop offset="16.66%" style="stop-color:#f59e0b;stop-opacity:1"></stop>
               <stop offset="33.33%" style="stop-color:#10b981;stop-opacity:1"></stop>
@@ -443,110 +442,102 @@
               <stop offset="100%" style="stop-color:#ec4899;stop-opacity:1"></stop>
             </linearGradient>
           </defs>
-          
-          <!-- Background Circle -->
-          <circle cx="40" cy="40" r="38" fill="url(#grad1)" opacity="0.2"></circle>
-          
-          <!-- Color Wheel Segments -->
-          <circle cx="40" cy="40" r="30" fill="none" stroke="url(#grad2)" stroke-width="8" stroke-linecap="round" stroke-dasharray="5 3"></circle>
-          
-          <!-- Center Circles -->
+          <circle cx="40" cy="40" r="38" fill="url(#grad1-sl)" opacity="0.2"></circle>
+          <circle cx="40" cy="40" r="30" fill="none" stroke="url(#grad2-sl)" stroke-width="8" stroke-linecap="round" stroke-dasharray="5 3"></circle>
           <circle cx="40" cy="40" r="18" fill="white" opacity="0.95"></circle>
-          <circle cx="40" cy="40" r="14" fill="url(#grad1)"></circle>
-          
-          <!-- Droplet in center -->
+          <circle cx="40" cy="40" r="14" fill="url(#grad1-sl)"></circle>
           <path d="M 40 28 C 40 28 34 34 34 38 C 34 41.31 36.69 44 40 44 C 43.31 44 46 41.31 46 38 C 46 34 40 28 40 28 Z" fill="white" opacity="0.9"></path>
         </svg>
       </div>
       <h1>Pickit Color</h1>
       <div style="display: flex; gap: 8px; justify-content: center; margin: 16px 0;">
-        <a href="index.html" class="lang-toggle" style="background: #3b82f6;">🇬🇧 EN</a>
+        <a href="index.html" class="lang-toggle">🇬🇧 EN</a>
         <a href="index-de.html" class="lang-toggle">🇩🇪 DE</a>
-        <a href="index-sl.html" class="lang-toggle">🇸🇮 SL</a>
+        <a href="index-sl.html" class="lang-toggle" style="background: #3b82f6;">🇸🇮 SL</a>
       </div>
-      <p class="subtitle">Modern, accessible color picker with auto-initialization</p>
+      <p class="subtitle">Sodoben, dostopen izbirnik barv z avtomatsko inicializacijo</p>
       <div class="badges">
         <a href="https://github.com/skerbis/pickit_color" target="_blank" class="badge" style="background: #24292e; text-decoration: none;">⭐ GitHub</a>
         <span class="badge">HEX / RGB / HSL</span>
-        <span class="badge">Alpha Support</span>
+        <span class="badge">Podpora alfa</span>
         <span class="badge">~15 KB</span>
         <span class="badge">♿ A11y</span>
       </div>
       <div style="margin-top: 24px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
-        <a href="https://github.com/skerbis/pickit_color" target="_blank" style="padding: 12px 24px; background: #3b82f6; color: white; text-decoration: none; border-radius: 8px; font-weight: 600; transition: transform 0.2s;">View on GitHub</a>
-        <a href="https://github.com/sponsors/skerbis" target="_blank" style="padding: 12px 24px; background: #ec4899; color: white; text-decoration: none; border-radius: 8px; font-weight: 600; transition: transform 0.2s;">💖 Sponsor</a>
+        <a href="https://github.com/skerbis/pickit_color" target="_blank" style="padding: 12px 24px; background: #3b82f6; color: white; text-decoration: none; border-radius: 8px; font-weight: 600; transition: transform 0.2s;">Poglej na GitHub</a>
+        <a href="https://github.com/sponsors/skerbis" target="_blank" style="padding: 12px 24px; background: #ec4899; color: white; text-decoration: none; border-radius: 8px; font-weight: 600; transition: transform 0.2s;">💖 Sponzoriraj</a>
       </div>
     </div>
 
     <!-- Quick Start -->
     <section class="section">
-      <h2>🚀 Quick Start</h2>
-      <p>The ColorPicker initializes automatically! Simply add the <code class="code-inline">data-colorpicker</code> attribute to your input fields:</p>
+      <h2>🚀 Hiter začetek</h2>
+      <p>Izbirnik barv se inicializira samodejno! Preprosto dodajte atribut <code class="code-inline">data-colorpicker</code> vašim vnosnim poljem:</p>
       
-      <div class="code-block"><code>&lt;!-- Include CSS --&gt;
+      <div class="code-block"><code>&lt;!-- Vključite CSS --&gt;
 &lt;link rel="stylesheet" href="dist/colorpicker.css"&gt;
 
-&lt;!-- Initialize ColorPicker via attribute --&gt;
+&lt;!-- Inicializirajte izbirnik barv z atributom --&gt;
 &lt;input type="text" data-colorpicker="format:hex" value="#3b82f6"&gt;
 
-&lt;!-- Include JavaScript (at the end of the body) --&gt;
+&lt;!-- Vključite JavaScript (na koncu body) --&gt;
 &lt;script src="dist/colorpicker.js"&gt;&lt;/script&gt;</code></div>
 
-      <h3>Live Demo - Auto-Init via Attribute</h3>
+      <h3>Demo v živo - samodejni zagon z atributom</h3>
       <div class="demo-grid">
         <div class="demo-card">
-          <h4>HEX Format</h4>
-          <label>Standard color selection</label>
+          <h4>Format HEX</h4>
+          <label>Standardna izbira barve</label>
           <input type="text" data-colorpicker="format:hex" value="#3b82f6">
           <div class="code-block"><code>&lt;input data-colorpicker="format:hex"&gt;</code></div>
         </div>
 
         <div class="demo-card">
-          <h4>HEX with Alpha</h4>
-          <label>8-digit HEX (#RRGGBBAA)</label>
+          <h4>HEX z alfo</h4>
+          <label>8-mestni HEX (#RRGGBBAA)</label>
           <input type="text" data-colorpicker="format:hex,alpha:true" value="#3b82f6cc">
           <div class="code-block"><code>&lt;input data-colorpicker="format:hex,alpha:true"&gt;</code></div>
         </div>
 
         <div class="demo-card">
-          <h4>RGB with Alpha</h4>
-          <label>Transparency support</label>
+          <h4>RGB z alfo</h4>
+          <label>Podpora prosojnosti</label>
           <input type="text" data-colorpicker="format:rgb,alpha:true" value="rgb(59, 130, 246)">
           <div class="code-block"><code>&lt;input data-colorpicker="format:rgb,alpha:true"&gt;</code></div>
         </div>
 
         <div class="demo-card">
-          <h4>HSL Format</h4>
-          <label>Hue-Saturation-Lightness</label>
+          <h4>Format HSL</h4>
+          <label>Odtenek-Nasičenost-Svetlost</label>
           <input type="text" data-colorpicker="format:hsl,alpha:true" value="hsl(217, 91%, 60%)">
           <div class="code-block"><code>&lt;input data-colorpicker="format:hsl,alpha:true"&gt;</code></div>
         </div>
 
         <div class="demo-card">
-          <h4>HSL Slider Mode</h4>
-          <label>Individual sliders for H, S, L, A</label>
+          <h4>Način drsnikov HSL</h4>
+          <label>Ločeni drsniki za H, S, L, A</label>
           <input type="text" data-colorpicker="format:hsl,sliderMode:true,alpha:true" value="hsla(217, 91%, 60%, 0.85)">
           <div class="code-block"><code>&lt;input 
   data-colorpicker="format:hsl,sliderMode:true,alpha:true"&gt;</code></div>
         </div>
 
         <div class="demo-card">
-          <h4>Compact Mode</h4>
-          <label>For forms</label>
+          <h4>Kompakten način</h4>
+          <label>Za obrazce</label>
           <input type="text" data-colorpicker="format:hex,compact:true" value="#8b5cf6">
           <div class="code-block"><code>&lt;input data-colorpicker="format:hex,compact:true"&gt;</code></div>
         </div>
 
         <div class="demo-card">
-          <h4>With EyeDropper</h4>
-          <label>Picker with screen color pipette</label>
+          <h4>Z EyeDropper</h4>
+          <label>Izbirnik s kapalko za zaslon</label>
           <input type="text" data-colorpicker="format:hex,eyeDropper:true" value="#10b981">
           <div class="code-block"><code>&lt;input data-colorpicker="format:hex,eyeDropper:true"&gt;</code></div>
         </div>
 
         <div class="demo-card">
-          <h4>Presets Only</h4>
-          <label>Predefined colors only</label>
+          <h4>Samo prednastavljeno</h4>
+          <label>Samo prednastavljene barve</label>
           <input type="text" 
             data-colorpicker="format:hex,presets:true" 
             data-preset-colors="#3b82f6,#10b981,#f59e0b,#ef4444,#8b5cf6,#ec4899"
@@ -557,8 +548,8 @@
         </div>
 
         <div class="demo-card">
-          <h4>List View</h4>
-          <label>With labels</label>
+          <h4>Pogled seznama</h4>
+          <label>Z oznakami</label>
           <input type="text" 
             id="list-view-demo"
             data-colorpicker="format:hex,presets:true,list:true" 
@@ -570,8 +561,8 @@
         </div>
 
         <div class="demo-card">
-          <h4>List View + Compact</h4>
-          <label>Button with list & labels</label>
+          <h4>Seznam + kompaktno</h4>
+          <label>Gumb s seznamom in oznakami</label>
           <input type="text" 
             id="list-compact-demo"
             value="#3b82f6">
@@ -582,14 +573,14 @@
     listView: true,
     presetsOnly: true,
     presetColors: [...],
-    presetLabels: ['Primary Color', ...]
+    presetLabels: ['Primarna barva', ...]
   });
 &lt;/script&gt;</code></div>
         </div>
 
         <div class="demo-card">
-          <h4>Input Preview Mode</h4>
-          <label>Color square visually integrated in input</label>
+          <h4>Način predogleda vnosa</h4>
+          <label>Barvni kvadrat vizualno vključen v vnos</label>
           <input type="text" 
             id="input-preview-demo"
             data-colorpicker="format:hex,showAlpha:true,inputPreview:true" 
@@ -598,39 +589,39 @@
         </div>
 
         <div class="demo-card">
-          <h4>🎨 Live Theme: Background</h4>
-          <label>Change background color live</label>
-          <div id="theme-bg-target" style="padding: 20px; border-radius: 8px; background: #3b82f6; color: white; text-align: center; margin-bottom: 12px; font-weight: 600;">
-            Live Preview Area
+          <h4>🎨 Živa tema: ozadje</h4>
+          <label>Spremeni barvo ozadja v živo</label>
+          <div id="theme-bg-target-sl" style="padding: 20px; border-radius: 8px; background: #3b82f6; color: white; text-align: center; margin-bottom: 12px; font-weight: 600;">
+            Območje živega predogleda
           </div>
-          <input type="text" data-colorpicker="format:hex,target:#theme-bg-target,property:background-color" value="#3b82f6">
-          <div class="code-block"><code>&lt;input data-colorpicker="format:hex,target:#theme-bg-target,property:background-color"&gt;</code></div>
+          <input type="text" data-colorpicker="format:hex,target:#theme-bg-target-sl,property:background-color" value="#3b82f6">
+          <div class="code-block"><code>&lt;input data-colorpicker="format:hex,target:#theme-bg-target-sl,property:background-color"&gt;</code></div>
         </div>
 
         <div class="demo-card">
-          <h4>🎨 Live Theme: Text Color</h4>
-          <label>Change text color live</label>
-          <div id="theme-text-target" style="padding: 20px; border-radius: 8px; background: #f3f4f6; color: #3b82f6; text-align: center; margin-bottom: 12px; font-weight: 600; font-size: 18px;">
-            Live Text Preview
+          <h4>🎨 Živa tema: barva besedila</h4>
+          <label>Spremeni barvo besedila v živo</label>
+          <div id="theme-text-target-sl" style="padding: 20px; border-radius: 8px; background: #f3f4f6; color: #3b82f6; text-align: center; margin-bottom: 12px; font-weight: 600; font-size: 18px;">
+            Živpregled besedila
           </div>
-          <input type="text" data-colorpicker="format:hex,target:#theme-text-target,property:color" value="#3b82f6">
-          <div class="code-block"><code>&lt;input data-colorpicker="format:hex,target:#theme-text-target,property:color"&gt;</code></div>
+          <input type="text" data-colorpicker="format:hex,target:#theme-text-target-sl,property:color" value="#3b82f6">
+          <div class="code-block"><code>&lt;input data-colorpicker="format:hex,target:#theme-text-target-sl,property:color"&gt;</code></div>
         </div>
 
         <div class="demo-card">
-          <h4>🌍 Multilanguage</h4>
-          <label>Set language manually or auto-detect from HTML</label>
-          <input type="text" data-colorpicker="format:hex,language:de" value="#3b82f6">
-          <div class="code-block"><code>&lt;input data-colorpicker="format:hex,language:de"&gt;
-&lt;!-- Auto-detects from &lt;html lang="en"&gt; or browser --&gt;</code></div>
+          <h4>🌍 Večjezičnost</h4>
+          <label>Nastavite jezik ročno ali ga samodejno zaznajte</label>
+          <input type="text" data-colorpicker="format:hex,language:sl" value="#3b82f6">
+          <div class="code-block"><code>&lt;input data-colorpicker="format:hex,language:sl"&gt;
+&lt;!-- Samodejno zaznava iz &lt;html lang="sl"&gt; ali brskalnika --&gt;</code></div>
           <p style="margin-top: 12px; font-size: 14px; color: var(--text-secondary);">
-            Supports: <strong>de</strong> (Deutsch), <strong>en</strong> (English), <strong>sl</strong> (Slovenščina)
+            Podpira: <strong>de</strong> (Deutsch), <strong>en</strong> (English), <strong>sl</strong> (Slovenščina)
           </p>
         </div>
 
         <div class="demo-card" style="grid-column: 1 / -1;">
-          <h4>Inline Mode</h4>
-          <label>Always visible, adapts to container width</label>
+          <h4>Vgrajen način</h4>
+          <label>Vedno viden, prilagaja se širini vsebnika</label>
           <div style="max-width: 800px; margin: 16px auto; background: var(--input-bg); padding: 24px; border-radius: 12px; border: 2px solid var(--input-border);">
             <input type="text" 
               id="inline-demo"
@@ -647,399 +638,82 @@
 
     <!-- Attribute Reference -->
     <section class="section">
-      <h2>📋 Attribute Reference</h2>
-      <p>Configure the ColorPicker directly in HTML with <code class="code-inline">data-colorpicker</code>:</p>
+      <h2>📋 Referenca atributov</h2>
+      <p>Konfigurirajte izbirnik barv neposredno v HTML z <code class="code-inline">data-colorpicker</code>:</p>
       
       <div class="table-container">
         <table>
           <thead>
             <tr>
-              <th>Attribute</th>
-              <th>Values</th>
-              <th>Description</th>
+              <th>Atribut</th>
+              <th>Vrednosti</th>
+              <th>Opis</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td><code class="code-inline">format</code></td>
               <td>hex, rgb, hsl</td>
-              <td>Color format for output</td>
+              <td>Format barve za izhod</td>
             </tr>
             <tr>
               <td><code class="code-inline">alpha</code></td>
               <td>true, false</td>
-              <td>Enable alpha channel (transparency)</td>
+              <td>Omogoči kanal alfa (prosojnost)</td>
             </tr>
             <tr>
               <td><code class="code-inline">compact</code></td>
               <td>true, false</td>
-              <td>Compact button view for forms</td>
+              <td>Kompakten pogled gumba za obrazce</td>
             </tr>
             <tr>
               <td><code class="code-inline">inline</code></td>
               <td>true, false</td>
-              <td>Always visible (no popup)</td>
+              <td>Vedno viden (brez pojavnega okna)</td>
             </tr>
             <tr>
               <td><code class="code-inline">presets</code></td>
               <td>true, false</td>
-              <td>Show predefined colors only</td>
+              <td>Prikaži samo prednastavljene barve</td>
             </tr>
             <tr>
               <td><code class="code-inline">list</code></td>
               <td>true, false</td>
-              <td>Presets as list with labels</td>
+              <td>Prednastavljeno kot seznam z oznakami</td>
             </tr>
           </tbody>
         </table>
       </div>
 
-      <h3>Examples</h3>
-      <div class="code-block"><code>&lt;!-- HEX with Alpha --&gt;
+      <h3>Primeri</h3>
+      <div class="code-block"><code>&lt;!-- HEX z alfo --&gt;
 &lt;input data-colorpicker="format:hex,alpha:true"&gt;
 
-&lt;!-- Compact for forms --&gt;
+&lt;!-- Kompaktno za obrazce --&gt;
 &lt;input data-colorpicker="format:rgb,compact:true"&gt;
 
-&lt;!-- Presets only --&gt;
+&lt;!-- Samo prednastavljeno --&gt;
 &lt;input 
   data-colorpicker="presets:true"
   data-preset-colors="#ff0000,#00ff00,#0000ff"&gt;
 
-&lt;!-- Combination of multiple options --&gt;
+&lt;!-- Kombinacija več možnosti --&gt;
 &lt;input data-colorpicker="format:hsl,alpha:true,compact:true"&gt;</code></div>
-    </section>
-
-    <!-- JavaScript API -->
-    <section class="section">
-      <h2>💻 JavaScript API</h2>
-      <p>For advanced configuration, you can also initialize the ColorPicker programmatically:</p>
-
-      <h3>Manual Initialization</h3>
-      <div class="code-block"><code>import colorpicker from 'pickit/colorpicker';
-
-// By selector
-const picker = colorpicker('#myInput', {
-  format: 'hex',
-  showAlpha: true,
-  onChange: (color) => {
-    console.log('Color changed:', color);
-  }
-});
-
-// By element
-const input = document.querySelector('#myInput');
-const picker2 = colorpicker(input, {
-  format: 'rgb',
-  compact: true
-});</code></div>
-
-      <h3>Options</h3>
-      <div class="table-container">
-        <table>
-          <thead>
-            <tr>
-              <th>Option</th>
-              <th>Type</th>
-              <th>Default</th>
-              <th>Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><code class="code-inline">format</code></td>
-              <td>string</td>
-              <td>'hex'</td>
-              <td>Output format: 'hex', 'rgb', 'hsl'</td>
-            </tr>
-            <tr>
-              <td><code class="code-inline">defaultColor</code></td>
-              <td>string</td>
-              <td>'#3b82f6'</td>
-              <td>Default color on load</td>
-            </tr>
-            <tr>
-              <td><code class="code-inline">showAlpha</code></td>
-              <td>boolean</td>
-              <td>false</td>
-              <td>Show alpha slider</td>
-            </tr>
-            <tr>              <td><code class="code-inline">sliderMode</code></td>
-              <td>boolean</td>
-              <td>false</td>
-              <td>Individual sliders for H, S, L instead of 2D picker</td>
-            </tr>
-            <tr>
-              <td><code class="code-inline">eyeDropper</code></td>
-              <td>boolean</td>
-              <td>false</td>
-              <td>Screen color pipette (Chrome/Safari/Edge)</td>
-            </tr>
-            <tr>              <td><code class="code-inline">presetColors</code></td>
-              <td>string[]</td>
-              <td>[...]</td>
-              <td>Array with predefined colors</td>
-            </tr>
-            <tr>
-              <td><code class="code-inline">presetLabels</code></td>
-              <td>string[]</td>
-              <td>[]</td>
-              <td>Labels for preset colors</td>
-            </tr>
-            <tr>
-              <td><code class="code-inline">presetsOnly</code></td>
-              <td>boolean</td>
-              <td>false</td>
-              <td>Presets only, no color selection</td>
-            </tr>
-            <tr>
-              <td><code class="code-inline">listView</code></td>
-              <td>boolean</td>
-              <td>false</td>
-              <td>Presets as list with labels</td>
-            </tr>
-            <tr>
-              <td><code class="code-inline">compact</code></td>
-              <td>boolean</td>
-              <td>false</td>
-              <td>Compact button view</td>
-            </tr>
-            <tr>
-              <td><code class="code-inline">inline</code></td>
-              <td>boolean</td>
-              <td>false</td>
-              <td>Always visible</td>
-            </tr>
-            <tr>
-              <td><code class="code-inline">inputPreview</code></td>
-              <td>boolean</td>
-              <td>false</td>
-              <td>Color square in input</td>
-            </tr>
-            <tr>
-              <td><code class="code-inline">onChange</code></td>
-              <td>function</td>
-              <td>-</td>
-              <td>Callback on color change</td>
-            </tr>
-            <tr>
-              <td><code class="code-inline">onOpen</code></td>
-              <td>function</td>
-              <td>-</td>
-              <td>Callback on open</td>
-            </tr>
-            <tr>
-              <td><code class="code-inline">onClose</code></td>
-              <td>function</td>
-              <td>-</td>
-              <td>Callback on close</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <h3>Methods</h3>
-      <div class="code-block"><code>// Set color
-picker.setColor('#ff0000');
-
-// Get color
-const currentColor = picker.getColor(); // "#ff0000"
-
-// Open/Close
-picker.open();
-picker.close();
-picker.toggle();
-
-// Destroy
-picker.destroy();
-
-// Get instance
-const instance = ColorPicker.getInstance(element);</code></div>
-    </section>
-
-    <!-- Advanced Examples -->
-    <section class="section">
-      <h2>🎯 Advanced Examples</h2>
-
-      <h3>1. Theme Color Palette with Labels</h3>
-      <div class="code-block"><code>const themePicker = colorpicker('#theme-color', {
-  format: 'hex',
-  listView: true,
-  presetsOnly: true,
-  presetColors: [
-    '#3b82f6',
-    '#10b981',
-    '#f59e0b',
-    '#ef4444',
-    '#8b5cf6',
-    '#ec4899'
-  ],
-  presetLabels: [
-    'Primary Color',
-    'Success Color',
-    'Warning Color',
-    'Danger Color',
-    'Secondary Color',
-    'Accent Color'
-  ],
-  onChange: (color) => {
-    document.documentElement.style.setProperty('--theme-color', color);
-  }
-});</code></div>
-
-      <h3>2. Live Background Color</h3>
-      <div class="code-block"><code>colorpicker('#bg-color', {
-  format: 'rgb',
-  showAlpha: true,
-  onChange: (color) => {
-    document.body.style.backgroundColor = color;
-  }
-});</code></div>
-
-      <h3>3. Form Integration (Compact Mode)</h3>
-      <div class="code-block"><code>&lt;form&gt;
-  &lt;label&gt;Brand Color&lt;/label&gt;
-  &lt;input 
-    type="text" 
-    name="brand_color"
-    data-colorpicker="format:hex,compact:true"
-    value="#3b82f6"&gt;
-  
-  &lt;button type="submit"&gt;Save&lt;/button&gt;
-&lt;/form&gt;</code></div>
-
-      <h3>4. Inline ColorPicker (full width)</h3>
-      <div class="code-block"><code>&lt;div style="max-width: 500px;"&gt;
-  &lt;input 
-    type="text" 
-    data-colorpicker="format:hex,inline:true"
-    value="#3b82f6"&gt;
-&lt;/div&gt;
-
-&lt;!-- Picker adapts to container width! --&gt;</code></div>
-
-      <h3>5. Multiple Pickers with Class</h3>
-      <div class="code-block"><code>&lt;!-- HTML --&gt;
-&lt;input class="colorpicker" data-format="hex"&gt;
-&lt;input class="colorpicker" data-format="rgb" data-alpha="true"&gt;
-&lt;input class="colorpicker" data-format="hsl"&gt;
-
-&lt;!-- Automatically initialized! --&gt;</code></div>
-
-      <h3>6. Add Custom Translation</h3>
-      <div class="code-block"><code>import colorpicker, { ColorPicker } from 'pickit-color';
-
-// Add French translation
-ColorPicker.addTranslation('fr', {
-  hue: 'Teinte',
-  saturation: 'Saturation et luminosité',
-  lightness: 'Luminosité',
-  alpha: 'Alpha',
-  presets: 'Couleurs prédéfinies',
-  eyeDropper: 'Pipette à couleurs',
-  systemPicker: 'Sélecteur système'
-});
-
-// Check available languages
-console.log(ColorPicker.getAvailableLanguages());
-// ['en', 'de', 'sl', 'fr']
-
-// Use new translation
-colorpicker('#color-input', {
-  format: 'hex',
-  language: 'fr'
-});</code></div>
-    </section>
-
-    <!-- Features -->
-    <section class="section">
-      <h2>✨ Features</h2>
-      <div class="feature-grid">
-        <div class="feature-card">
-          <h4>🎨 Color Formats</h4>
-          <p>HEX, RGB, RGBA, HSL, HSLA with full conversion</p>
-        </div>
-        <div class="feature-card">
-          <h4>⚡ Auto-Init</h4>
-          <p>Automatic initialization via attribute - no JavaScript needed</p>
-        </div>
-        <div class="feature-card">
-          <h4>♿ Accessibility</h4>
-          <p>WCAG 2.1 AA compliant with keyboard navigation and ARIA labels</p>
-        </div>
-        <div class="feature-card">
-          <h4>🌓 Dark Mode</h4>
-          <p>Automatic adaptation to prefers-color-scheme</p>
-        </div>
-        <div class="feature-card">
-          <h4>📦 Compact Mode</h4>
-          <p>Space-saving button view for forms</p>
-        </div>
-        <div class="feature-card">
-          <h4>🎯 Preset Colors</h4>
-          <p>Predefined color palettes with optional labels</p>
-        </div>
-        <div class="feature-card">
-          <h4>⌨️ Keyboard Support</h4>
-          <p>Tab, Enter, Arrow keys, Escape - fully operable</p>
-        </div>
-        <div class="feature-card">
-          <h4>🔧 Lightweight</h4>
-          <p>~13KB minified, no dependencies</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Keyboard Shortcuts -->
-    <section class="section">
-      <h2>⌨️ Keyboard Shortcuts</h2>
-      <div class="table-container">
-        <table>
-          <thead>
-            <tr>
-              <th>Key</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><code class="code-inline">Tab</code></td>
-              <td>Focus on input field</td>
-            </tr>
-            <tr>
-              <td><code class="code-inline">Enter / Space</code></td>
-              <td>Open/close picker</td>
-            </tr>
-            <tr>
-              <td><code class="code-inline">↑ ↓ ← →</code></td>
-              <td>Adjust color in picker</td>
-            </tr>
-            <tr>
-              <td><code class="code-inline">Shift + Arrow keys</code></td>
-              <td>Larger steps</td>
-            </tr>
-            <tr>
-              <td><code class="code-inline">Escape</code></td>
-              <td>Close picker</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
     </section>
 
     <!-- Footer -->
     <section class="section">
       <p style="text-align: center; color: var(--text-secondary); font-size: 14px; margin-top: 60px; padding-top: 40px; border-top: 2px solid var(--input-border);">
-        Made with ❤️ by <a href="https://github.com/skerbis" target="_blank" style="color: #3b82f6; text-decoration: none; font-weight: 600;">Thomas Skerbis</a> (KLXM Crossmedia)
+        Ustvarjeno z ❤️ avtor <a href="https://github.com/skerbis" target="_blank" style="color: #3b82f6; text-decoration: none; font-weight: 600;">Thomas Skerbis</a> (KLXM Crossmedia)
       </p>
       <p style="text-align: center; color: var(--text-secondary); font-size: 14px; margin-top: 12px;">
-        This software is Donationware • 
-        <a href="https://github.com/sponsors/skerbis" target="_blank" style="color: #ec4899; text-decoration: none; font-weight: 600;">Support Development</a>
+        Ta program je Donationware • 
+        <a href="https://github.com/sponsors/skerbis" target="_blank" style="color: #ec4899; text-decoration: none; font-weight: 600;">Podprite razvoj</a>
       </p>
       <p style="text-align: center; color: var(--text-secondary); font-size: 13px; margin-top: 20px;">
         <a href="https://github.com/skerbis/pickit_color" target="_blank" style="color: var(--text-secondary); text-decoration: none;">GitHub</a> • 
-        <a href="https://github.com/skerbis/pickit_color/issues" target="_blank" style="color: var(--text-secondary); text-decoration: none;">Issues</a> • 
-        <a href="https://github.com/skerbis/pickit_color/blob/master/LICENSE.md" target="_blank" style="color: var(--text-secondary); text-decoration: none;">License</a>
+        <a href="https://github.com/skerbis/pickit_color/issues" target="_blank" style="color: var(--text-secondary); text-decoration: none;">Težave</a> • 
+        <a href="https://github.com/skerbis/pickit_color/blob/master/LICENSE.md" target="_blank" style="color: var(--text-secondary); text-decoration: none;">Licenca</a>
       </p>
     </section>
   </div>
@@ -1050,11 +724,11 @@ colorpicker('#color-input', {
     const cp = window.colorpicker.default || window.colorpicker;
     const ColorPicker = window.colorpicker.ColorPicker;
     
-    // ColorPicker is automatically initialized through data-colorpicker attributes!
+    // ColorPicker se samodejno inicializira z atributi data-colorpicker!
     
-    // Wait briefly until auto-init is complete
+    // Počakajte malo, da se dokonča samodejna inicializacija
     setTimeout(() => {
-      // List View Demo mit Labels
+      // Demo pogleda seznama z oznakami
       const listViewInput = document.getElementById('list-view-demo');
       if (listViewInput) {
         const existingInstance = ColorPicker?.getInstance(listViewInput);
@@ -1067,14 +741,14 @@ colorpicker('#color-input', {
           listView: true,
           presetsOnly: true,
           presetColors: ['#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6', '#ec4899'],
-          presetLabels: ['Primary Color', 'Success Color', 'Warning Color', 'Danger Color', 'Secondary Color', 'Accent Color'],
+          presetLabels: ['Primarna barva', 'Barva uspeha', 'Barva opozorila', 'Barva nevarnosti', 'Sekundarna barva', 'Poudarjena barva'],
           onChange: (color) => {
             listViewInput.value = color;
           }
         });
       }
 
-      // List View + Compact Demo
+      // Demo seznam + kompaktno
       const listCompactInput = document.getElementById('list-compact-demo');
       if (listCompactInput) {
         const existingCompact = ColorPicker?.getInstance(listCompactInput);
@@ -1088,14 +762,14 @@ colorpicker('#color-input', {
           presetsOnly: true,
           compact: true,
           presetColors: ['#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6', '#ec4899'],
-          presetLabels: ['Primary Color', 'Success Color', 'Warning Color', 'Danger Color', 'Secondary Color', 'Accent Color'],
+          presetLabels: ['Primarna barva', 'Barva uspeha', 'Barva opozorila', 'Barva nevarnosti', 'Sekundarna barva', 'Poudarjena barva'],
           onChange: (color) => {
             listCompactInput.value = color;
           }
         });
       }
 
-      // Inline Demo sicherstellen
+      // Zagotovi vgrajen demo
       const inlineInput = document.getElementById('inline-demo');
       if (inlineInput) {
         const existingInline = ColorPicker?.getInstance(inlineInput);
@@ -1108,14 +782,14 @@ colorpicker('#color-input', {
           inline: true,
           appendTo: inlineInput.parentElement,
           onChange: (color) => {
-            console.log('Inline color changed:', color);
+            console.log('Vgrajena barva spremenjena:', color);
           }
         });
       }
     }, 100);
 
-    console.log('ColorPicker Demo loaded!');
-    console.log('All inputs with data-colorpicker have been automatically initialized.');
+    console.log('Demo ColorPicker naložen!');
+    console.log('Vsi vnosi z data-colorpicker so bili samodejno inicializirani.');
   </script>
 </body>
 </html>

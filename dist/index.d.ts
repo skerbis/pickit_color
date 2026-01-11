@@ -1,3 +1,12 @@
+export interface ColorPickerLanguage {
+    hue: string;
+    saturation: string;
+    lightness: string;
+    alpha: string;
+    presets: string;
+    eyeDropper: string;
+    systemPicker: string;
+}
 export interface ColorPickerOptions {
     defaultColor?: string;
     format?: "hex" | "rgb" | "hsl";
@@ -13,6 +22,7 @@ export interface ColorPickerOptions {
     inputPreview?: boolean;
     previewTarget?: string;
     previewProperty?: string;
+    language?: string;
     onChange?: (color: string) => void;
     onOpen?: () => void;
     onClose?: () => void;
@@ -43,6 +53,8 @@ export declare class ColorPicker {
     private compactButton;
     private inputPreview;
     private static instances;
+    static addTranslation(langCode: string, translation: ColorPickerLanguage): void;
+    static getAvailableLanguages(): string[];
     constructor(element: string | HTMLInputElement, options?: ColorPickerOptions);
     private init;
     private buildColorPicker;
@@ -82,3 +94,4 @@ export declare class ColorPicker {
 }
 export default function colorpicker(selector: string | HTMLInputElement, options?: ColorPickerOptions): ColorPicker;
 export declare function initColorPickers(root?: Document | HTMLElement): ColorPicker[];
+export * as languages from './l10n';

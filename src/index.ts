@@ -4,6 +4,41 @@
  * Supports HSL, RGB, HEX formats with keyboard navigation
  */
 
+import * as languages from './l10n';
+
+export interface ColorPickerLanguage {
+  hue: string;
+  saturation: string;
+  lightness: string;
+  alpha: string;
+  presets: string;
+  eyeDropper: string;
+  systemPicker: string;
+}
+
+// Initialize translations with built-in languages
+const translations: Record<string, ColorPickerLanguage> = {
+  en: languages.en,
+  de: languages.de,
+  sl: languages.sl
+};
+
+function detectLanguage(): string {
+  // Try HTML lang attribute
+  const htmlLang = document.documentElement.lang;
+  if (htmlLang) {
+    const lang = htmlLang.split('-')[0].toLowerCase();
+    if (translations[lang]) return lang;
+  }
+  
+  // Try browser language
+  const browserLang = navigator.language.split('-')[0].toLowerCase();
+  if (translations[browserLang]) return browserLang;
+  
+  // Default to English
+  return 'en';
+}
+
 export interface ColorPickerOptions {
   defaultColor?: string;
   format?: "hex" | "rgb" | "hsl";
@@ -19,6 +54,7 @@ export interface ColorPickerOptions {
   inputPreview?: boolean;
   previewTarget?: string;
   previewProperty?: string;
+  language?: string;
   onChange?: (color: string) => void;
   onOpen?: () => void;
   onClose?: () => void;
@@ -66,6 +102,33 @@ export class ColorPicker {
 
   private static instances: Map<HTMLElement, ColorPicker> = new Map();
 
+  /**
+   * Add a custom translation for the ColorPicker
+   * @param langCode - Language code (e.g., 'fr', 'es', 'it')
+   * @param translation - Translation object with all required strings
+   * @example
+   * ColorPicker.addTranslation('fr', {
+   *   hue: 'Teinte',
+   *   saturation: 'Saturation et luminosité',
+   *   lightness: 'Luminosité',
+   *   alpha: 'Alpha',
+   *   presets: 'Couleurs prédéfinies',
+   *   eyeDropper: 'Pipette à couleurs',
+   *   systemPicker: 'Sélecteur système'
+   * });
+   */
+  static addTranslation(langCode: string, translation: ColorPickerLanguage): void {
+    translations[langCode.toLowerCase()] = translation;
+  }
+
+  /**
+   * Get all available language codes
+   * @returns Array of language codes
+   */
+  static getAvailableLanguages(): string[] {
+    return Object.keys(translations);
+  }
+
   constructor(
     element: string | HTMLInputElement,
     options: ColorPickerOptions = {}
@@ -107,6 +170,7 @@ export class ColorPicker {
       inputPreview: options.inputPreview ?? false,
       previewTarget: options.previewTarget || "",
       previewProperty: options.previewProperty || "background-color",
+      language: options.language || detectLanguage(),
       onChange: options.onChange || (() => {}),
       onOpen: options.onOpen || (() => {}),
       onClose: options.onClose || (() => {}),
@@ -114,12 +178,12 @@ export class ColorPicker {
       position: options.position || "auto",
       closeOnSelect: options.closeOnSelect ?? true,
       ariaLabels: {
-        hue: options.ariaLabels?.hue || "Hue",
+        hue: options.ariaLabels?.hue || translations[options.language || detectLanguage()].hue,
         saturation:
-          options.ariaLabels?.saturation || "Saturation and Lightness",
-        lightness: options.ariaLabels?.lightness || "Lightness",
-        alpha: options.ariaLabels?.alpha || "Alpha",
-        presets: options.ariaLabels?.presets || "Preset colors",
+          options.ariaLabels?.saturation || translations[options.language || detectLanguage()].saturation,
+        lightness: options.ariaLabels?.lightness || translations[options.language || detectLanguage()].lightness,
+        alpha: options.ariaLabels?.alpha || translations[options.language || detectLanguage()].alpha,
+        presets: options.ariaLabels?.presets || translations[options.language || detectLanguage()].presets,
       },
     };
 
@@ -1326,6 +1390,10 @@ export function initColorPickers(root: Document | HTMLElement = document): Color
           case 'previewProperty':
             options.previewProperty = value;
             break;
+          case 'lang':
+          case 'language':
+            options.language = value;
+            break;
         }
       });
     }
@@ -1360,6 +1428,9 @@ export function initColorPickers(root: Document | HTMLElement = document): Color
 
   return pickers;
 }
+
+// Export language modules for external use
+export * as languages from './l10n';
 
 // Auto-init on DOMContentLoaded
 if (typeof window !== 'undefined' && typeof document !== 'undefined') {

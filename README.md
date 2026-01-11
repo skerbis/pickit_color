@@ -120,12 +120,54 @@ const picker = colorpicker('#myInput', {
 <input data-colorpicker="format:hex,target:#preview-box,property:color">
 ```
 
+### Multilanguage Support
+
+```html
+<!-- Auto-detects from <html lang="de"> or browser language -->
+<input data-colorpicker="format:hex">
+
+<!-- Explicitly set language -->
+<input data-colorpicker="format:hex,language:de">
+```
+
+**Built-in Languages:** `en` (English), `de` (Deutsch), `sl` (Slovenščina)
+
+**Contributing Translations:**
+
+1. Create a file in `src/l10n/` (e.g., `fr.ts`)
+2. Copy the `ColorPickerLanguage` interface structure
+3. Export in `src/l10n/index.ts`
+4. Submit a PR!
+
+See [TRANSLATIONS.md](TRANSLATIONS.md) for the complete guide.
+
+**Runtime Translation:**
+
+```javascript
+import colorpicker, { ColorPicker } from 'pickit-color';
+
+// Add French translation
+ColorPicker.addTranslation('fr', {
+  hue: 'Teinte',
+  saturation: 'Saturation et luminosité',
+  lightness: 'Luminosité',
+  alpha: 'Alpha',
+  presets: 'Couleurs prédéfinies',
+  eyeDropper: 'Pipette à couleurs',
+  systemPicker: 'Sélecteur système'
+});
+
+// Check available languages
+console.log(ColorPicker.getAvailableLanguages()); // ['en', 'de', 'sl', 'fr']
+```
+
 ## ⚙️ Options
 
 | Option | Type | Default | Description |
 |--------|------|---------|-------------|
 | `previewTarget` | `string` | `''` | CSS selector of element to update with color |
 | `previewProperty` | `string` | `'background-color'` | CSS property to update on target element |
+| `language` | `string` | `auto` | UI language: `en`, `de`, `sl` or custom (auto-detects from HTML or browser) |
 | `format` | `string` | `'hex'` | Color format: `hex`, `hex8`, `rgb`, `rgba`, `hsl`, `hsla` |
 | `showAlpha` | `boolean` | `false` | Show alpha/transparency slider |
 | `defaultColor` | `string` | `'#3b82f6'` | Initial color if input is empty |
