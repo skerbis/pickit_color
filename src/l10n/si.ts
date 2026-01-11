@@ -1,6 +1,6 @@
 import { ColorPickerLanguage } from '../index';
 
-const sl: ColorPickerLanguage = {
+const si: ColorPickerLanguage = {
   hue: "Odtenek",
   saturation: "Nasičenost in svetlost",
   lightness: "Svetlost",
@@ -10,4 +10,4 @@ const sl: ColorPickerLanguage = {
   systemPicker: "Sistemski izbirnik barv"
 };
 
-export default sl;
+export default si;

@@ -130,7 +130,7 @@ const picker = colorpicker('#myInput', {
 <input data-colorpicker="format:hex,language:de">
 ```
 
-**Built-in Languages:** `en` (English), `de` (Deutsch), `sl` (Slovenščina)
+**Built-in Languages:** `en` (English), `de` (Deutsch), `si` (Slovenščina)
 
 **Contributing Translations:**
 
@@ -167,7 +167,7 @@ console.log(ColorPicker.getAvailableLanguages()); // ['en', 'de', 'sl', 'fr']
 |--------|------|---------|-------------|
 | `previewTarget` | `string` | `''` | CSS selector of element to update with color |
 | `previewProperty` | `string` | `'background-color'` | CSS property to update on target element |
-| `language` | `string` | `auto` | UI language: `en`, `de`, `sl` or custom (auto-detects from HTML or browser) |
+| `language` | `string` | `auto` | UI language: `en`, `de`, `si` or custom (auto-detects from HTML or browser) |
 | `format` | `string` | `'hex'` | Color format: `hex`, `hex8`, `rgb`, `rgba`, `hsl`, `hsla` |
 | `showAlpha` | `boolean` | `false` | Show alpha/transparency slider |
 | `defaultColor` | `string` | `'#3b82f6'` | Initial color if input is empty |

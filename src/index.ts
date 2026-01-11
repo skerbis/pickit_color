@@ -20,7 +20,7 @@ export interface ColorPickerLanguage {
 const translations: Record<string, ColorPickerLanguage> = {
   en: languages.en,
   de: languages.de,
-  sl: languages.sl
+  si: languages.si
 };
 
 function detectLanguage(): string {

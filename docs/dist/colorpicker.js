@@ -83,7 +83,7 @@
         systemPicker: "System-Farbwähler"
     };
 
-    var sl = {
+    var si = {
         hue: "Odtenek",
         saturation: "Nasičenost in svetlost",
         lightness: "Svetlost",
@@ -110,7 +110,7 @@
         __proto__: null,
         en: en,
         de: de,
-        sl: sl
+        si: si
     });
 
     /**
@@ -122,7 +122,7 @@
     var translations = {
         en: en,
         de: de,
-        sl: sl
+        si: si
     };
     function detectLanguage() {
         // Try HTML lang attribute

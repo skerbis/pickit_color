@@ -1,4 +1,4 @@
-var sl = {
+var si = {
     hue: "Odtenek",
     saturation: "Nasičenost in svetlost",
     lightness: "Svetlost",
@@ -7,4 +7,4 @@ var sl = {
     eyeDropper: "Izberi barvo z zaslona",
     systemPicker: "Sistemski izbirnik barv"
 };
-export default sl;
+export default si;

@@ -38,7 +38,7 @@ import * as languages from './l10n';
 var translations = {
     en: languages.en,
     de: languages.de,
-    sl: languages.sl
+    si: languages.si
 };
 function detectLanguage() {
     var htmlLang = document.documentElement.lang;
