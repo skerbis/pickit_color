@@ -1,4 +1,4 @@
-# 🎨 Pickit Color
+# TS Pickit Color
 
 A modern, lightweight, and accessible color picker with HSL/RGBA support, preset colors, multiple UI modes, and screen color picking capabilities.
 
