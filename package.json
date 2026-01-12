@@ -1,6 +1,6 @@
 {
   "name": "pickit-color",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "A modern, accessible color picker with HSL support, presets, slider mode, and screen color picking",
   "main": "dist/colorpicker.js",
   "module": "dist/esm/colorpicker/index.js",
