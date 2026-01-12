@@ -373,7 +373,7 @@ export class ColorPicker {
                 <path d="M20 14l-8 8"/>
               </svg>
             </button>
-            ` : ''}
+            ` : `
             <button 
               type="button"
               class="colorpicker-system-picker-btn"
@@ -392,6 +392,7 @@ export class ColorPicker {
               class="colorpicker-system-picker-input"
               style="position: absolute; opacity: 0; pointer-events: none; width: 0; height: 0;"
             />
+            `}
             `
                 : ""
             }
