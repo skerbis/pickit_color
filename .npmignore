@@ -1,0 +1,40 @@
+# Source and tests
+src/
+*.ts
+!dist/**/*.d.ts
+
+# Development files
+.github/
+.vscode/
+.idea/
+*.spec.ts
+*.test.ts
+__tests__/
+
+# Config files
+tsconfig*.json
+.babelrc
+.prettierrc*
+.eslintrc*
+rollup.config.*
+
+# Build tools
+build.ts
+config/
+
+# Documentation (keep only essentials)
+CHANGELOG.md
+BUILD.md
+CUSTOM_THEME.md
+
+# Examples
+demo*.html
+test*.html
+examples/
+
+# Misc
+.DS_Store
+*.log
+.git
+.gitignore
+.npmignore

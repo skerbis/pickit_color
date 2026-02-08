@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Keyboard Navigation Test</title>
+  <link rel="stylesheet" href="dist/colorpicker.css">
+  <style>
+    body {
+      padding: 40px;
+      background: #1a1a2e;
+      color: white;
+      font-family: system-ui, -apple-system, sans-serif;
+    }
+    .test-container {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    h1 { margin-bottom: 30px; }
+    .test-section {
+      margin-bottom: 40px;
+      padding: 20px;
+      background: #16213e;
+      border-radius: 8px;
+    }
+    label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      border-radius: 4px;
+      border: 1px solid #3c4f76;
+      background: #0f172a;
+      color: white;
+    }
+    .instructions {
+      margin-top: 20px;
+      padding: 15px;
+      background: #0f172a;
+      border-left: 3px solid #3b82f6;
+      border-radius: 4px;
+    }
+    .instructions h3 {
+      margin-top: 0;
+      color: #3b82f6;
+    }
+    .instructions ul {
+      margin: 10px 0;
+      padding-left: 20px;
+    }
+    .instructions li {
+      margin: 5px 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="test-container">
+    <h1>🎨 Keyboard Navigation Test</h1>
+
+    <div class="test-section">
+      <label for="test1">List View mit Labels</label>
+      <input 
+        type="text" 
+        id="test1" 
+        value="#3c83f6"
+        data-preset-colors='["#3c83f6", "#10b981", "#f59e0b", "#ef4444", "#8b5cf6", "#ec4899"]'
+        data-preset-labels='["Primary Color", "Success Color", "Warning Color", "Danger Color", "Secondary Color", "Accent Color"]'
+        data-list-view="true"
+      />
+    </div>
+
+    <div class="test-section">
+      <label for="test2">Standard Presets</label>
+      <input 
+        type="text" 
+        id="test2" 
+        value="#ff6b6b"
+        data-preset-colors='["#ff6b6b", "#4ecdc4", "#45b7d1", "#f7b731", "#5f27cd"]'
+      />
+    </div>
+
+    <div class="instructions">
+      <h3>Keyboard Navigation Testen:</h3>
+      <ul>
+        <li><strong>Tab</strong> - Fokus auf Input, dann zum ColorPicker</li>
+        <li><strong>Enter</strong> auf Input - ColorPicker öffnen</li>
+        <li><strong>Tab</strong> im Picker - Durch Slider und Presets navigieren</li>
+        <li><strong>↑↓←→</strong> auf Presets - Zwischen Farben wechseln</li>
+        <li><strong>Enter/Space</strong> - Farbe auswählen</li>
+        <li><strong>Escape</strong> - Schließen</li>
+      </ul>
+      
+      <h3>Was testen:</h3>
+      <ul>
+        <li>Kann ich mit Tab zu den Presets?</li>
+        <li>Funktionieren Pfeiltasten in der Liste?</li>
+        <li>Sehe ich einen Focus-Indicator?</li>
+      </ul>
+    </div>
+  </div>
+
+  <script src="dist/colorpicker.js"></script>
+  <script>
+    const cp = window.colorpicker.default || window.colorpicker;
+    
+    // Test 1: List View
+    cp('#test1', {
+      onChange: (color) => {
+        console.log('List View color changed:', color);
+      }
+    });
+
+    // Test 2: Standard
+    cp('#test2', {
+      onChange: (color) => {
+        console.log('Standard color changed:', color);
+      }
+    });
+
+    // Log focus events
+    document.addEventListener('focusin', (e) => {
+      console.log('Focus:', e.target.className, e.target.getAttribute('aria-label'));
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,105 @@
+name: Create GitHub Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Tag version (e.g., v1.0.3)'
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    name: Create GitHub Release
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          
+      - name: Install dependencies
+        run: npm ci
+        
+      - name: Build project
+        run: npm run build
+        
+      - name: Get version
+        id: version
+        run: |
+          if [ "${{ github.event_name }}" == "workflow_dispatch" ]; then
+            echo "VERSION=${{ inputs.tag }}" >> $GITHUB_OUTPUT
+          else
+            echo "VERSION=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
+          fi
+          
+      - name: Create release archive
+        run: |
+          mkdir -p release
+          cp -r dist release/
+          cp README.md LICENSE.md package.json release/
+          cd release
+          tar -czf ../pickit-color-${{ steps.version.outputs.VERSION }}.tar.gz *
+          cd ..
+          zip -r pickit-color-${{ steps.version.outputs.VERSION }}.zip release/*
+          
+      - name: Generate changelog
+        id: changelog
+        run: |
+          VERSION=${{ steps.version.outputs.VERSION }}
+          if git tag --list | grep -q "${VERSION}"; then
+            PREV_TAG=$(git tag --sort=-v:refname | grep -A1 "${VERSION}" | tail -1)
+            if [ ! -z "$PREV_TAG" ]; then
+              echo "CHANGELOG<<EOF" >> $GITHUB_OUTPUT
+              git log ${PREV_TAG}..${VERSION} --pretty=format:"- %s (%h)" >> $GITHUB_OUTPUT
+              echo "" >> $GITHUB_OUTPUT
+              echo "EOF" >> $GITHUB_OUTPUT
+            else
+              echo "CHANGELOG=Initial release" >> $GITHUB_OUTPUT
+            fi
+          else
+            echo "CHANGELOG=Release $VERSION" >> $GITHUB_OUTPUT
+          fi
+          
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ steps.version.outputs.VERSION }}
+          name: Release ${{ steps.version.outputs.VERSION }}
+          body: |
+            ## 🎨 Pickit Color ${{ steps.version.outputs.VERSION }}
+            
+            ### 📦 Installation
+            ```bash
+            npm install pickit-color
+            ```
+            
+            ### 📝 Changes
+            ${{ steps.changelog.outputs.CHANGELOG }}
+            
+            ### 📚 Documentation
+            - [Demo & Docs](https://skerbis.github.io/pickit_color/)
+            - [NPM Package](https://www.npmjs.com/package/pickit-color)
+          files: |
+            pickit-color-${{ steps.version.outputs.VERSION }}.tar.gz
+            pickit-color-${{ steps.version.outputs.VERSION }}.zip
+            dist/colorpicker.js
+            dist/colorpicker.min.js
+            dist/colorpicker.css
+            dist/colorpicker.min.css
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

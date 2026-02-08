@@ -1,0 +1,88 @@
+{
+  "name": "pickit-color",
+  "version": "1.2.3",
+  "description": "A modern, accessible color picker with HSL support, presets, slider mode, and screen color picking",
+  "main": "dist/colorpicker.js",
+  "module": "dist/esm/colorpicker/index.js",
+  "types": "dist/colorpicker.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/esm/colorpicker/index.js",
+      "require": "./dist/colorpicker.js",
+      "types": "./dist/colorpicker.d.ts"
+    },
+    "./l10n": {
+      "import": "./dist/esm/colorpicker/l10n/index.js",
+      "require": "./dist/l10n/index.js",
+      "types": "./dist/l10n/index.d.ts"
+    },
+    "./l10n/*": {
+      "import": "./dist/esm/colorpicker/l10n/*.js",
+      "require": "./dist/l10n/*.js",
+      "types": "./dist/l10n/*.d.ts"
+    }
+  },
+  "author": {
+    "name": "Thomas Skerbis",
+    "email": "thomas@klxm.de",
+    "url": "https://github.com/skerbis"
+  },
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/skerbis"
+  },
+  "license": "SEE LICENSE IN LICENSE.md",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/skerbis/pickit_color.git"
+  },
+  "bugs": {
+    "url": "https://github.com/skerbis/pickit_color/issues"
+  },
+  "homepage": "https://skerbis.github.io/pickit_color/",
+  "keywords": [
+    "color-picker",
+    "colorpicker",
+    "hsl",
+    "rgba",
+    "hex",
+    "eyedropper",
+    "accessibility",
+    "a11y",
+    "typescript",
+    "vanilla-js"
+  ],
+  "files": [
+    "dist/**/*",
+    "src/**/*",
+    "LICENSE.md",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "run-s build:pre build:build build:esm build:types build:docs",
+    "build:pre": "rimraf dist",
+    "build:build": "ts-node --transpile-only build.ts",
+    "build:esm": "tsc -p tsconfig.esm.json",
+    "build:types": "tsc -p tsconfig.declarations.json",
+    "build:docs": "cp -r dist/* docs/dist/",
+    "prepublishOnly": "npm run build",
+    "release": "./release.sh"
+  },
+  "devDependencies": {
+    "@types/node": "^14.14.14",
+    "@types/stylus": "^0.48.33",
+    "autoprefixer-stylus": "latest",
+    "chokidar": "^3.4.3",
+    "fs-extra": "^9.0.1",
+    "glob": "^7.1.6",
+    "npm-run-all": ">=4.1.5",
+    "rimraf": "^3.0.2",
+    "rollup": "^2.35.1",
+    "rollup-plugin-typescript": "^1.0.1",
+    "stylus": "latest",
+    "terser": "^5.5.1",
+    "ts-node": "^9.1.1",
+    "tslib": "^2.7.0",
+    "typescript": "^5.7.2"
+  }
+}
